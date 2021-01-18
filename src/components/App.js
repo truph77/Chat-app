@@ -1,14 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
+import useLocalStorage from "../hooks/useLocalStorage";
 import Login from "./Login";
+import Dashboard from "./Dashboard";
 
 function App() {
-  const [id, setId] = useState();
-  return (
-    <>
-      <h1 align="center">this is: {id}</h1>
-      <Login setId={setId} />
-    </>
-  );
+  const [id, setId] = useLocalStorage("id");
+  return id ? <Dashboard id={id} /> : <Login setId={setId} />;
 }
 
 export default App;
